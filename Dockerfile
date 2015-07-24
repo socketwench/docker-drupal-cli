@@ -24,6 +24,17 @@ RUN \
     DEBIAN_FRONTEND=noninteractive apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+# Apache Utilities
+
+RUN \
+    DEBIAN_FRONTEND=noninteractive apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get -y --force-yes install \
+    apache2-utils \
+    --no-install-recommends && \
+    # Cleanup
+    DEBIAN_FRONTEND=noninteractive apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 # PHP packages
 RUN \
     DEBIAN_FRONTEND=noninteractive apt-get update && \
